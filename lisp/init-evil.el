@@ -77,6 +77,13 @@
     (kbd "<leader> b p") 'consult-buffer
     (kbd "<leader> b i") 'ibuffer
 
+	(kbd "<leader> e o") (lambda () (interactive)
+						   (setq himalaya-account "outlook"
+								 himalaya-folder "INBOX"
+								 himalaya-executable "~/.cargo/bin/himalaya"
+								 himalaya-config-path "~/.config/himalaya/config.toml")
+						   (himalaya-list-envelopes))
+
 	(kbd "<leader> g d") 'diff-hl-show-hunk
 	(kbd "<leader> g s") 'diff-hl-stage-current-hunk
 	(kbd "<leader> g n") 'diff-hl-next-hunk

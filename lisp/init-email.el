@@ -11,11 +11,9 @@
 (use-package himalaya
   :straight t
   :commands (himalaya himalaya-list-envelopes)
-  :custom
-  (himalaya-account "outlook")
-  (himalaya-folder "Apple")
-  (himalaya-executable "~/hm.sh")
-  (himalaya-config-path "~/.config/himalaya/config.toml")
+  :init
+  ;; Stop complaining about `himalaya--update-mode-line' being void
+  (defun himalaya--update-mode-line () (interactive))
   :config
   (evil-define-key 'normal himalaya-list-envelopes-mode-map
     (kbd "RET") 'himalaya-read-message-at-point))
