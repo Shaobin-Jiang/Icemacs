@@ -38,9 +38,8 @@
 
 
 (use-package indent-guide
-  :defer t
   :straight t
-  :ensure t
+  :defer t
   :hook
   (prog-mode . indent-guide-mode)
   :config

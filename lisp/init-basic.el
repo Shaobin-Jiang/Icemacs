@@ -122,7 +122,6 @@
 
 
 (use-package no-littering
-  :ensure t
   :straight t
   :config
   (setq yas-snippet-dirs (list (locate-user-emacs-file "snippets"))))

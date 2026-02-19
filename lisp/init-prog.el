@@ -63,7 +63,6 @@
 
 
 (use-package cape
-  :ensure t
   :straight t
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
@@ -72,7 +71,6 @@
 
 
 (use-package lsp-mode
-  :ensure t
   :straight t
   :defer t
   :hook ((lsp-mode . evil-normalize-keymaps)
@@ -137,7 +135,6 @@
 
 
 (use-package format-all
-  :ensure t
   :straight t
   :after evil
   :config

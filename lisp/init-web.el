@@ -9,7 +9,6 @@
 ;;; Code:
 
 (use-package add-node-modules-path
-  :ensure t
   :straight t
   :defer t
   :custom
