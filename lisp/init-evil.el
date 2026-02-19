@@ -24,6 +24,7 @@
 	    evil-vsplit-window-right t
 	    evil-want-fine-undo t
 	    evil-want-C-u-scroll t
+		evil-want-keybinding nil
 	    evil-echo-state nil
 	    evil-want-empty-ex-last-command nil
         evil-search-module "evil-search")
