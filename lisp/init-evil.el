@@ -67,7 +67,7 @@
     (kbd "J") 'ice/join
 	(kbd "C-t") (lambda () (interactive)
 				  (evil-window-vsplit)
-				  (term "/bin/zsh"))
+				  (vterm))
 
 	(kbd "<leader> P") 'consult-yank-from-kill-ring
 

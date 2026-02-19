@@ -21,6 +21,8 @@
 ;; early stages.
 (require 'init-evil)
 
+(require 'init-term)
+
 (require 'init-completion)
 (require 'init-prog)
 
