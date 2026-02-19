@@ -10,7 +10,6 @@
 
 (use-package undo-tree
   :straight t
-  :defer t
   :hook
   (after-init . global-undo-tree-mode)
   :init
@@ -26,12 +25,10 @@
 
 (use-package avy
   :straight t
-  :after evil
   :custom
   (avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?z ?x ?c ?v ?b ?n ?m))
   :config
-  (avy-setup-default)
-  (evil-define-key 'normal 'global (kbd "<leader> h p") 'avy-goto-char-2))
+  (avy-setup-default))
 
 (provide 'init-edit)
 

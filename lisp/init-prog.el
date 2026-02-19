@@ -27,7 +27,6 @@
 
 (use-package flymake
   :ensure nil
-  :defer t
   :hook (prog-mode . flymake-mode)
   :custom
   (flymake-margin-indicators-string
@@ -72,7 +71,6 @@
 
 (use-package lsp-mode
   :straight t
-  :defer t
   :hook ((lsp-mode . evil-normalize-keymaps)
          (lsp-mode . lsp-enable-which-key-integration)
          ((js-mode
@@ -130,28 +128,24 @@
     (kbd "<leader> l p") 'flymake-goto-prev-error
     (kbd "<leader> l r") 'lsp-rename
     (kbd "<leader> l R") 'lsp-find-references
-    (kbd "<leader> l t") 'consult-flymake)
-  )
+    (kbd "<leader> l t") 'consult-flymake))
 
 
 (use-package format-all
   :straight t
-  :after evil
+  :defer t
   :config
   (setq-default format-all-formatters
                 '(("Python"     (black))
-				  ("JavaScript" (prettier))))
-  (evil-define-key 'normal 'global (kbd "<leader> l f") 'format-all-buffer)
-  (evil-define-key 'visual 'global (kbd "<leader> l f") 'format-all-region))
+				  ("JavaScript" (prettier)))))
 
 
 (use-package yasnippet
   :straight t
-  :after evil
-  :bind (:map yas-minor-mode-map ("TAB" . nil))
+  :bind (("M-s" . yas-insert-snippet)
+		 (:map yas-minor-mode-map ("TAB" . nil)))
   :config
-  (yas-global-mode)
-  (evil-define-key '(normal insert) 'global (kbd "M-s") 'yas-insert-snippet))
+  (yas-global-mode))
 
 
 (use-package yasnippet-snippets

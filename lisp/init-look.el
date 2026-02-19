@@ -10,6 +10,7 @@
 
 (use-package treesit-auto
   :straight t
+  :commands treesit-auto-install-all
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -39,7 +40,6 @@
 
 (use-package indent-guide
   :straight t
-  :defer t
   :hook
   (prog-mode . indent-guide-mode)
   :config
@@ -48,14 +48,12 @@
 
 (use-package rainbow-delimiters
   :straight t
-  :defer t
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
 
 (use-package pulsar
   :straight t
-  :defer t
   :hook
   (after-init . pulsar-global-mode)
   :config
@@ -78,7 +76,6 @@
 
 (use-package doom-modeline
   :straight t
-  :defer t
   :custom
   (doom-modeline-buffer-file-name-style 'buffer-name)
   (doom-modeline-project-detection 'project)
@@ -97,13 +94,11 @@
 
 (use-package nerd-icons-corfu
   :straight t
-  :defer t
   :after (:all corfu))
 
 
 (use-package nerd-icons-dired
   :straight t
-  :defer t
   :hook
   (dired-mode . nerd-icons-dired-mode))
 

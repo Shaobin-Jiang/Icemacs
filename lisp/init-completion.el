@@ -34,7 +34,6 @@
 
 (use-package orderless
   :straight t
-  :defer t
   :after vertico
   :init
   (setq completion-styles '(orderless basic)
@@ -57,13 +56,7 @@
 
   ;; Use Consult for xref locations with a preview feature.
   (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
-  :config
-  (evil-define-key 'normal 'global
-	(kbd "<leader> s f") 'consult-find
-	(kbd "<leader> s G") 'consult-git-grep
-	(kbd "<leader> s r") 'consult-ripgrep
-	(kbd "<leader> s l") 'consult-line))
+        xref-show-definitions-function #'consult-xref))
 
 (provide 'init-completion)
 

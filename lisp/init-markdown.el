@@ -10,7 +10,6 @@
 
 (use-package markdown-mode
   :straight t
-  :defer t
   :hook (markdown-mode . visual-line-mode)
   :mode ("README\\.md\\'" . gfm-mode))
 

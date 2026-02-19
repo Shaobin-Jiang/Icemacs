@@ -10,7 +10,7 @@
 
 (use-package himalaya
   :straight t
-  :after evil
+  :commands (himalaya himalaya-list-envelopes)
   :custom
   (himalaya-account "outlook")
   (himalaya-folder "Apple")

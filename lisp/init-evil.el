@@ -15,7 +15,6 @@
 
 (use-package evil
   :straight t
-  :defer t
   :hook
   (after-init . evil-mode)
   :init
@@ -78,6 +77,23 @@
     (kbd "<leader> b p") 'consult-buffer
     (kbd "<leader> b i") 'ibuffer
 
+	(kbd "<leader> g d") 'diff-hl-show-hunk
+	(kbd "<leader> g s") 'diff-hl-stage-current-hunk
+	(kbd "<leader> g n") 'diff-hl-next-hunk
+	(kbd "<leader> g p") 'diff-hl-previous-hunk
+    (kbd "<leader> g t") 'magit-project-status
+
+	(kbd "<leader> h p") 'avy-goto-char-2
+
+	(kbd "<leader> p d") '(lambda () (interactive) (project-dired))
+	(kbd "<leader> p f") 'project-find-file
+	(kbd "<leader> p p") 'project-switch-project
+
+	(kbd "<leader> s f") 'consult-find
+	(kbd "<leader> s G") 'consult-git-grep
+	(kbd "<leader> s r") 'consult-ripgrep
+	(kbd "<leader> s l") 'consult-line
+
     (kbd "<leader> u f") 'dired-jump
 	(kbd "<leader> u u") 'undo-tree-visualize
     (kbd "<leader> u c") '(lambda () (interactive)
@@ -101,7 +117,8 @@
 
   (evil-define-key '(normal visual) 'global
     (kbd "\\") '(lambda () (interactive)
-				  (setq this-command 'evil-use-register evil-this-register ?_)))
+				  (setq this-command 'evil-use-register evil-this-register ?_))
+	(kbd "<leader> l f") 'format-all-region-or-buffer)
 
   (evil-define-key 'normal emacs-lisp-mode-map
     (kbd "<leader> l d") (lambda () (interactive)
@@ -234,7 +251,6 @@ depending on whether the line is empty."
 
 (use-package evil-collection
   :straight t
-  :defer t
   :custom
   (evil-collection-want-find-usages-bindings t)
   :config

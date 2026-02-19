@@ -9,8 +9,8 @@
 ;;; Code:
 
 (use-package diff-hl
-  :defer t
   :straight t
+  :defer t ; WTF I cannot remove this despite having hook below?
   :hook
   (find-file . (lambda ()
                  (global-diff-hl-mode)
@@ -22,22 +22,15 @@
 								  (delete . "-")
 								  (change . "┃")
 								  (unknown . "┆")
-								  (ignored . "i")))
-  :config
-  (evil-define-key 'normal 'global
-	(kbd "<leader> g d") 'diff-hl-show-hunk
-	(kbd "<leader> g s") 'diff-hl-stage-current-hunk
-	(kbd "<leader> g n") 'diff-hl-next-hunk
-	(kbd "<leader> g p") 'diff-hl-previous-hunk))
+								  (ignored . "i"))))
 
 
 (use-package magit
   :straight t
-  :after evil
+  :defer t
   :config
   (setopt magit-format-file-function #'magit-format-file-nerd-icons)
   (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  (evil-define-key 'normal 'global (kbd "<leader> g t") 'magit-project-status)
   (evil-define-key 'normal magit-status-mode-map (kbd "q") 'magit-bury-or-kill-buffer))
 
 (provide 'init-git)
