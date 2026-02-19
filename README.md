@@ -1,7 +1,7 @@
 <h1 align="center">Icemacs</h1>
 
 <div align="center">
-<p>A powerful emacs configuration for those who comes from neovim. Spiritual successor of <a href="https://github.com/Shaobin-Jiang/IceNvim">IceNvim</a>.</p>
+<p>A powerful emacs configuration for those who come from neovim. Spiritual successor of <a href="https://github.com/Shaobin-Jiang/IceNvim">IceNvim</a>.</p>
 
 *Please consider starring the project ✨✨✨. Your support is much appreciated.*
 
