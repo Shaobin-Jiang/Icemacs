@@ -81,7 +81,9 @@
 	(kbd "<leader> g s") 'diff-hl-stage-current-hunk
 	(kbd "<leader> g n") 'diff-hl-next-hunk
 	(kbd "<leader> g p") 'diff-hl-previous-hunk
+	(kbd "<leader> g r") 'diff-hl-revert-hunk
     (kbd "<leader> g t") 'magit-project-status
+	(kbd "<leader> g C-g") '(lambda () (interactive) (diff-hl-update))
 
 	(kbd "<leader> h p") 'avy-goto-char-2
 
