@@ -10,10 +10,12 @@
 
 (use-package lsp-pyright
   :straight t
+  :defer t
   :custom (lsp-pyright-langserver-command "pyright")
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))
+  :hook ((python-mode python-ts-mode) . (lambda ()
+										  (require 'lsp-pyright)
+										  (lsp)))
+  ((python-mode python-ts-mode) . (lambda () (set-fill-column 120))))
 
 (provide 'init-python)
 
