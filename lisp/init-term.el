@@ -9,8 +9,10 @@
 ;;; Code:
 
 (use-package vterm
+  :straight t
   :defer t
-  :straight t)
+  :hook (vterm-mode . (lambda () (interactive)
+						(display-line-numbers-mode -1))))
 
 (provide 'init-term)
 
