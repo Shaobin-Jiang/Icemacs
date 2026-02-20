@@ -27,6 +27,7 @@
 (require 'init-prog)
 
 (require 'init-dired)
+(require 'init-ibuffer)
 (require 'init-org)
 (require 'init-git)
 

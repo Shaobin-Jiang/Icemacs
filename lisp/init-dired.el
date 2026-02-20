@@ -78,7 +78,6 @@ Otherwise, it is opened in a vsplit."
 
 (use-package dired
   :ensure nil
-  :after evil
   :custom
   (dired-listing-switches "-lAh --group-directories-first")
   (dired-guess-shell-alist-user '((".*" "open")))
