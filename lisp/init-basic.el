@@ -95,7 +95,8 @@
   (("TAB" . (lambda () (interactive) (insert-tab))))
 
   :hook
-  (after-init . which-key-mode))
+  (after-init . which-key-mode)
+  (prog-mode  . hs-minor-mode))
 
 
 (use-package window
