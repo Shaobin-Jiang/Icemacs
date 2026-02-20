@@ -94,6 +94,10 @@
 
 	(kbd "<leader> h p") 'avy-goto-char-2
 
+	(kbd "<leader> o a") 'org-agenda
+	(kbd "<leader> o c") 'org-capture
+	(kbd "<leader> o t") 'consult-org-agenda
+
 	(kbd "<leader> p d") '(lambda () (interactive) (project-dired))
 	(kbd "<leader> p f") 'project-find-file
 	(kbd "<leader> p p") 'project-switch-project
