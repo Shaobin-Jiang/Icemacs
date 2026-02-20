@@ -25,6 +25,7 @@
   (delete-by-moving-to-trash t)
   (display-line-numbers-type 'relative)
   (global-auto-revert-non-file-buffers t)
+  (help-window-select t)
   (history-length 25)
   (inhibit-startup-message t)
   (initial-scratch-message "")
@@ -78,8 +79,8 @@
 ;;    Loading time : %s
 ;;    Packages     : %s
 "
-                         (emacs-init-time)
-                         (length (hash-table-keys straight--recipe-cache)))))))
+								(emacs-init-time)
+								(length (hash-table-keys straight--recipe-cache)))))))
 
   :config
   (defun skip-these-buffers (_window buffer _bury-or-kill)
@@ -118,7 +119,26 @@
       (display-buffer-in-side-window)
       (window-height . 0.25)
       (side . bottom)
-      (slot . 1)))))
+      (slot . 1))))
+  :config
+  (defun ice/push-button-on-file-same-window ()
+	"Perform `push-button' in help window but open file in same window."
+	(interactive)
+	(let ((cwc (current-window-configuration))
+          (hb (current-buffer))
+          (file? (button-get (button-at (point)) 'help-args)))
+      (funcall
+       `(lambda ()
+          (defun ice/push-button-on-file-same-window-internal ()
+			(if (> (length ',file?) 1)
+				(let ((cb (current-buffer)))
+                  (set-window-configuration ,cwc)
+                  (switch-to-buffer cb)
+                  (kill-buffer ,hb)))))))
+	(call-interactively 'push-button)
+	(run-with-timer 0.01 nil 'ice/push-button-on-file-same-window-internal))
+
+  (define-key button-map (kbd "RET") 'ice/push-button-on-file-same-window))
 
 
 (use-package no-littering
