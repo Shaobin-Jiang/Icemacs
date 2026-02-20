@@ -38,6 +38,11 @@
   (global-treesit-auto-mode t))
 
 
+(use-package hl-todo
+  :straight t
+  :hook prog-mode)
+
+
 (use-package indent-guide
   :straight t
   :hook
