@@ -21,8 +21,8 @@
   (setq eldoc-idle-delay 0)
   (setq eldoc-echo-area-use-multiline-p nil)
   (setq eldoc-echo-area-display-truncation-message nil)
-  :init
-  (global-eldoc-mode))
+  :hook
+  (emacs-lisp-mode . eldoc-mode))
 
 
 (use-package flymake
@@ -92,7 +92,7 @@
   ;; Core settings
   (lsp-enable-xref t)                       ; Enable cross-references
   (lsp-auto-configure t)
-  (lsp-eldoc-enable-hover t)
+  (lsp-eldoc-enable-hover nil)
   (lsp-enable-links nil)
   (lsp-enable-file-watchers nil)
   (lsp-enable-folding nil)
@@ -107,6 +107,7 @@
   (lsp-modeline-diagnostics-enable nil)     ; Use `flymake' instead
   (lsp-modeline-workspace-status-enable t)  ; Display "LSP" in the modeline when enabled
   (lsp-session-file (expand-file-name ".lsp-session" no-littering-var-directory))
+  (lsp-signature-auto-activate nil)
   (lsp-signature-doc-lines 1)
   (lsp-eldoc-render-all t)
   ;; Completion settings
