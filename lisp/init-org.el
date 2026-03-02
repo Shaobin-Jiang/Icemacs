@@ -28,9 +28,17 @@
    '((sequence "TODO(t)" "PENDING(p)" "|" "DONE(d)" "CANCELLED(c)")
 	 (sequence "SCHEDULED(s)" "|" "FINISHED(f)" "POSTPONED(p)")))
   :config
+  (evil-set-initial-state 'org-agenda-mode 'normal)
+  (evil-define-key 'normal org-agenda-mode-map
+	(kbd "j") 'org-agenda-next-line
+	(kbd "k") 'org-agenda-previous-line
+	(kbd "q") 'org-agenda-quit
+	(kbd "RET") 'org-agenda-switch-to)
   (org-babel-do-load-languages 'org-babel-load-languages
 			                   '((emacs-lisp . t)
-                                 (python     . t))))
+                                 (python     . t)))
+  :bind (:map org-mode-map
+			  ("M-b" . eaf-open-this-buffer)))
 
 (provide 'init-org)
 

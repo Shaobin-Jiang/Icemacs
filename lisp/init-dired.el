@@ -24,11 +24,17 @@
 							   "webm" "avi" "mp3" "m4a" "flac" "wav"
 							   "ogg" "pdf" "docx" "doc" "xlsx" "xls"
 							   "pptx"))
+		 (eaf-extension '("png" "jpg" "jpeg" "gif" "webp" "bmp" "tif"
+						  "tiff" "svg" "pdf"))
          (ext (downcase (or (file-name-extension file) ""))))
 
     (cond
      ((file-directory-p file)
       (dired-find-file))
+
+	 ((and (member ext eaf-extension) (commandp 'eaf-open))
+	  (eaf-open file)
+	  (kill-buffer dired-buf))
 
      ((member ext external-extension)
       (let ((cmd (format "open %s"

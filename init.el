@@ -39,6 +39,8 @@
 
 (require 'init-email)
 
+(require 'init-eaf)
+
 (provide 'init)
 
 ;;; init.el ends here

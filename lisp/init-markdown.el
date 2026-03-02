@@ -11,7 +11,9 @@
 (use-package markdown-mode
   :straight t
   :hook (markdown-mode . visual-line-mode)
-  :mode ("README\\.md\\'" . gfm-mode))
+  :mode ("README\\.md\\'" . gfm-mode)
+  :bind (:map markdown-mode-map
+			  ("M-b" . eaf-open-this-buffer)))
 
 (provide 'init-markdown)
 

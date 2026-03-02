@@ -107,6 +107,9 @@
 	(kbd "<leader> s r") 'consult-ripgrep
 	(kbd "<leader> s l") 'consult-line
 
+    (kbd "<leader> u b") '(lambda ()
+							(interactive)
+							(eaf-open-browser "https://google.com"))
     (kbd "<leader> u f") 'dired-jump
 	(kbd "<leader> u u") 'undo-tree-visualize
     (kbd "<leader> u c") '(lambda () (interactive)
