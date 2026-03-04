@@ -26,6 +26,7 @@
 							   "pptx"))
 		 (eaf-extension '("png" "jpg" "jpeg" "gif" "webp" "bmp" "tif"
 						  "tiff" "svg" "pdf"))
+		 (eaf-office-extension '("docx" "doc" "xlsx" "xls" "pptx"))
          (ext (downcase (or (file-name-extension file) ""))))
 
     (cond
@@ -34,6 +35,10 @@
 
 	 ((and (member ext eaf-extension) (commandp 'eaf-open))
 	  (eaf-open file)
+	  (kill-buffer dired-buf))
+
+	 ((and (member ext eaf-office-extension) (commandp 'eaf-open-office))
+	  (eaf-open-office file)
 	  (kill-buffer dired-buf))
 
      ((member ext external-extension)
