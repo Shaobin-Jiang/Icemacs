@@ -28,12 +28,20 @@
 (use-package magit
   :straight t
   :defer t
+  :custom
+  (magit-log-section-commit-count 150)
   :config
   (setopt magit-format-file-function #'magit-format-file-nerd-icons)
   (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   (evil-set-initial-state 'git-commit-mode 'insert)
   (evil-define-key 'normal magit-status-mode-map
-	(kbd "q") 'magit-bury-or-kill-buffer)
+	(kbd "q") (lambda ()
+				(interactive)
+				(magit-bury-or-kill-buffer)
+				(mapc (lambda (b)
+						(when (string-prefix-p "magit" (buffer-name b))
+						  (kill-buffer b)))
+					  (buffer-list))))
   (evil-define-key '(normal insert) with-editor-mode-map
 	;; Default C-c C-k throws weird error to which I have no solution.
 	;; However, commit with C-c C-c, which calls `with-editor-finish'
