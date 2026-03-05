@@ -73,7 +73,11 @@
     (kbd "<leader> b h") 'switch-to-prev-buffer
     (kbd "<leader> b l") 'switch-to-next-buffer
     (kbd "<leader> b c") 'kill-buffer
-    (kbd "<leader> b d") (lambda () (interactive) (kill-buffer))
+    (kbd "<leader> b d") (lambda ()
+						   (interactive)
+						   (kill-buffer)
+						   (if (not (one-window-p))
+							   (evil-window-delete)))
     (kbd "<leader> b p") 'consult-buffer
     (kbd "<leader> b i") 'ibuffer
 
