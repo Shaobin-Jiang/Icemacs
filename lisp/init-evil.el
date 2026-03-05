@@ -125,6 +125,16 @@
 	(kbd "g c") 'ice/comment
 	(kbd "g C") 'ice/comment-operator)
 
+  (evil-define-key 'insert 'global (kbd "C-v") 'yank)
+  (define-key minibuffer-mode-map (kbd "C-v") 'yank)
+  (define-key evil-ex-completion-map (kbd "C-v") 'yank)
+  (define-key evil-ex-completion-map (kbd "C-a") 'move-beginning-of-line)
+  (define-key evil-ex-completion-map (kbd "C-e") 'move-end-of-line)
+  (define-key evil-ex-completion-map (kbd "C-f") 'forward-char)
+  (define-key evil-ex-completion-map (kbd "C-b") 'backward-char)
+  (define-key evil-ex-completion-map (kbd "M-f") 'evil-forward-word)
+  (define-key evil-ex-completion-map (kbd "M-b") 'evil-backward-word-begin)
+
   (evil-define-key 'visual 'global (kbd "g c")
     (lambda ()
       (interactive)
