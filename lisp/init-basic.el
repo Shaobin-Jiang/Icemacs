@@ -68,7 +68,6 @@
 
   (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font Mono" :height 180)
   (set-fontset-font t 'han (font-spec :family "霞鹜文楷等宽" :size 22))
-  (set-frame-parameter (selected-frame) 'alpha '(90 90))
 
   (add-hook 'after-init-hook
             (lambda ()

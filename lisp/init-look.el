@@ -8,6 +8,26 @@
 
 ;;; Code:
 
+(defun transparent-toggle (&optional state)
+  "Sets the transparency state of the frame.
+If `STATE' is 1, make frame transparent.  If `STATE' is specified but
+takes any other value, make frame opaque.  If unspecified, toggle
+transparency."
+  (interactive)
+  (let* ((frame (selected-frame))
+		 (transparency (frame-parameter frame 'alpha))
+		 (alpha '(90 90)))
+	(cond
+	 ((eq state 1)
+	  (set-frame-parameter frame 'alpha alpha))
+	 ((null state)
+	  (if (equal transparency '(100 100))
+		  (set-frame-parameter frame 'alpha alpha)
+		(set-frame-parameter frame 'alpha '(100 100))))
+	 (t
+	  (set-frame-parameter frame 'alpha '(100 100))))))
+(transparent-toggle 1)
+
 (use-package treesit-auto
   :straight t
   :commands treesit-auto-install-all
@@ -119,14 +139,29 @@
 (use-package catppuccin-theme
   :straight t
   :config
-  (custom-set-faces
-   `(diff-hl-change ((t (:background unspecified :foreground ,(catppuccin-get-color 'blue))))))
-  (custom-set-faces
-   `(diff-hl-delete ((t (:background unspecified :foreground ,(catppuccin-get-color 'red))))))
-  (custom-set-faces
-   `(diff-hl-insert ((t (:background unspecified :foreground ,(catppuccin-get-color 'green))))))
+  (defconst catppuccin-flavors
+	'(latte frappe macchiato mocha)
+	"List of catppuccin flavors.")
+  (defun set-catppuccin-flavor (flavor)
+	"Set the flavor of catppuccin theme."
+	(interactive
+	 (list
+	  (intern
+	   (completing-read
+		"Catppuccin flavor: "
+		(mapcar #'symbol-name catppuccin-flavors) nil t))))
+	(unless (memq flavor catppuccin-flavors)
+	  (user-error "Invalid flavor %S (expected one of %S)" flavor catppuccin-flavors))
+	(setq catppuccin-flavor flavor)
 
-  (load-theme 'catppuccin :no-confirm))
+	(custom-set-faces
+	 `(diff-hl-change ((t (:background unspecified :foreground ,(catppuccin-get-color 'blue))))))
+	(custom-set-faces
+	 `(diff-hl-delete ((t (:background unspecified :foreground ,(catppuccin-get-color 'red))))))
+	(custom-set-faces
+	 `(diff-hl-insert ((t (:background unspecified :foreground ,(catppuccin-get-color 'green))))))
+	(load-theme 'catppuccin :no-confirm))
+  (set-catppuccin-flavor 'frappe))
 
 (provide 'init-look)
 
