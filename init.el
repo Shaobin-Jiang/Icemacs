@@ -33,10 +33,6 @@
 
 (require 'init-look)
 
-(require 'init-markdown)
-(require 'init-python)
-(require 'init-web)
-
 (require 'init-email)
 
 (require 'init-eaf)

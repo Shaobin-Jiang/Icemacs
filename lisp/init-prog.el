@@ -81,7 +81,8 @@
 		   prisma-mode
 		   python-base-mode
 		   python-mode
-		   web-mode) . lsp-deferred))
+		   web-mode
+		   js-json-mode) . lsp-deferred))
   :commands lsp
   :custom
   (lsp-inlay-hint-enable t)
@@ -152,6 +153,40 @@
 (use-package yasnippet-snippets
   :straight t
   :defer t)
+
+;; Language specific configuration goes here
+(use-package lsp-pyright
+  :straight t
+  :defer t
+  :custom (lsp-pyright-langserver-command "pyright")
+  :hook ((python-mode python-ts-mode) . (lambda ()
+										  (require 'lsp-pyright)
+										  (lsp)))
+  ((python-mode python-ts-mode) . (lambda () (set-fill-column 120))))
+
+
+(use-package add-node-modules-path
+  :straight t
+  :defer t
+  :custom
+  ;; Makes sure you are using the local bin for your
+  ;; node project. Local eslint, typescript server...
+  (eval-after-load 'typescript-ts-mode
+    '(add-hook 'typescript-ts-mode-hook #'add-node-modules-path))
+  (eval-after-load 'tsx-ts-mode
+    '(add-hook 'tsx-ts-mode-hook #'add-node-modules-path))
+  (eval-after-load 'typescriptreact-mode
+    '(add-hook 'typescriptreact-mode-hook #'add-node-modules-path))
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook #'add-node-modules-path)))
+
+
+(use-package markdown-mode
+  :straight t
+  :hook (markdown-mode . visual-line-mode)
+  :mode ("README\\.md\\'" . gfm-mode)
+  :bind (:map markdown-mode-map
+			  ("M-b" . eaf-open-this-buffer)))
 
 (provide 'init-prog)
 
