@@ -34,6 +34,9 @@
 	(kbd "k") 'org-agenda-previous-line
 	(kbd "q") 'org-agenda-quit
 	(kbd "RET") 'org-agenda-switch-to)
+  (evil-define-key 'normal org-mode-map
+	(kbd "<leader> o i") 'org-toggle-inline-images
+	(kbd "<leader> o l") 'org-toggle-link-display)
   (org-babel-do-load-languages 'org-babel-load-languages
 			                   '((emacs-lisp . t)
                                  (python     . t)))
