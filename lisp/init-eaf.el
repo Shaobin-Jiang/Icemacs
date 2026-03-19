@@ -10,6 +10,7 @@
 (use-package eaf
   :load-path "~/.local/share/emacs/emacs-application-framework"
   :defer 1
+  :if (display-graphic-p)
   :custom
   (eaf-config-location(expand-file-name
 					   "eaf/" no-littering-var-directory))
