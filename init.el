@@ -33,8 +33,6 @@
 
 (require 'init-look)
 
-(require 'init-email)
-
 (require 'init-eaf)
 
 (provide 'init)
