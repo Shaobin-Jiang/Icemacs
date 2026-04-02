@@ -33,12 +33,16 @@
 		evil-want-fine-undo t)
 
   ;; Treat _ as part of word
-  ;; See https://emacs.stackexchange.com/questions/9583/how-to-treat-underscore-as-part-of-the-word
-  (defadvice evil-inner-word (around underscore-as-word activate)
-	(let ((table (copy-syntax-table (syntax-table))))
-      (modify-syntax-entry ?_ "w" table)
-      (with-syntax-table table
-		ad-do-it)))
+  (defun underscore-as-word (orig-fn &rest args)
+	   (with-syntax-table (copy-syntax-table (syntax-table))
+		 (modify-syntax-entry ?_ "w")
+		 (apply orig-fn args)))
+  (advice-add 'evil-inner-word :around #'underscore-as-word)
+  (advice-add 'evil-a-word :around #'underscore-as-word)
+  (advice-add 'evil-forward-word-begin :around #'underscore-as-word)
+  (advice-add 'evil-forward-word-end :around #'underscore-as-word)
+  (advice-add 'evil-backward-word-begin :around #'underscore-as-word)
+  (advice-add 'evil-backward-word-end :around #'underscore-as-word)
 
   (defun ice/evil-recenter-after-motion (&rest _args)
     "Recenter window after Evil vertical motions."
