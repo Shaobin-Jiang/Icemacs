@@ -27,6 +27,7 @@
   (global-auto-revert-non-file-buffers t)
   (help-window-select t)
   (history-length 25)
+  (initial-buffer-choice t)
   (inhibit-startup-message t)
   (initial-scratch-message "")
   (ispell-dictionary "en_US")
