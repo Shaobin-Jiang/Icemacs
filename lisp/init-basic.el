@@ -91,6 +91,12 @@
   ;; Use symbol │ for vertical devisor instead of |.
   (set-display-table-slot standard-display-table 'vertical-border (make-glyph-code ?│))
 
+  ;; See https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
+  (setq-default bidi-display-reordering 'left-to-right
+				bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t)
+
+  (setq redisplay-skip-fontification-on-input t)
   :bind
   (("TAB" . (lambda () (interactive) (insert-tab))))
 
