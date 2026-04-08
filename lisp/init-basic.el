@@ -33,6 +33,7 @@
   (ispell-dictionary "en_US")
   (make-backup-files nil)
   (maximum-scroll-margin 0.5)
+  (reb-re-syntax 'string)
   (ring-bell-function 'ignore)
   (scroll-margin 999)
   (shell-file-name "/bin/zsh")
